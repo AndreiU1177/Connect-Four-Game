@@ -18,7 +18,6 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
-pygame.init()
 
 # Dimensions
 width = (COLUMN_COUNT + 2) * SQUARESIZE  # All columns + borders
@@ -26,13 +25,15 @@ height = (ROW_COUNT + 1) * SQUARESIZE  # Extra row for the top display
 size = (width, height)
 
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Connect Four")
-
 
 class ConnectFourGUI:
     def __init__(self):
+        pygame.init()
+        screen = pygame.display.set_mode(size)
+        pygame.display.set_caption("Connect Four")
         self.__service = Service(ROW_COUNT, COLUMN_COUNT)
         self.turn = self.whoStarts()  # True for player, False for computer
+
         self.draw_board()
         if not self.turn:
             self.computer_move()
@@ -147,6 +148,5 @@ def main():
                     posx = event.pos[0]
                     col = int(math.floor(posx / SQUARESIZE)) # Column 1 to 6
                     game.player_move(col)
-
 
 main()
