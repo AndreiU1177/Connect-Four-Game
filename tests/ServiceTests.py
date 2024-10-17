@@ -1,8 +1,8 @@
 import unittest
 
-from src.exceptions import FullColumn, InvalidColumn
+from src.utils.exceptions import FullColumn, InvalidColumn
 
-from src.service import Service
+from src.service.service import Service
 
 
 class TestService(unittest.TestCase):
