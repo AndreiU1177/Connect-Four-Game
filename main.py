@@ -9,4 +9,6 @@ if __name__ == '__main__':
         module = importlib.import_module('src.ui.gui')
     elif choice == '1':
         module = importlib.import_module('src.ui.ui')
+    else:
+        print("No such choice! Your options are either 1 or 2, nothing else!")
 
