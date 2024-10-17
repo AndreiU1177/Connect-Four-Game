@@ -32,8 +32,23 @@ pygame.display.set_caption("Connect Four")
 class ConnectFourGUI:
     def __init__(self):
         self.__service = Service(ROW_COUNT, COLUMN_COUNT)
-        self.turn = True  # True for player, False for computer
+        self.turn = self.whoStarts()  # True for player, False for computer
         self.draw_board()
+        if not self.turn:
+            self.computer_move()
+
+    def whoStarts(self):
+        root = tk.Tk()
+
+        root.withdraw()
+
+        # Ask the player if they want to start
+        result = messagebox.askyesno("Start game!", "Do you want to start?")
+
+        # Destroy the tkinter root window after the messagebox is closed
+        root.destroy()
+
+        return result
 
     def draw_board(self):
         for c in range(1, COLUMN_COUNT+1):
