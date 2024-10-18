@@ -29,7 +29,6 @@ screen = pygame.display.set_mode(size)
 class ConnectFourGUI:
     def __init__(self):
         pygame.init()
-        screen = pygame.display.set_mode(size)
         pygame.display.set_caption("Connect Four")
         self.__service = Service(ROW_COUNT, COLUMN_COUNT)
         self.turn = self.whoStarts()  # True for player, False for computer
@@ -96,6 +95,7 @@ class ConnectFourGUI:
             self.turn = True
 
     def show_winner(self, message):
+        pygame.time.wait(3000)
         font = pygame.font.SysFont("monospace", 75)
         label = font.render(message, 1, RED if message == "You won!" else YELLOW)
         screen.blit(label, (40, 10))
